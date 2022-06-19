@@ -1,8 +1,8 @@
 // Add your code here
 function submitData (userName, userEmail) {
     const user ={
-        "name": userName,
-        "email": userEmail
+        "name": 
+        "email"
     }
     const userdata = {
         method: "POST",
