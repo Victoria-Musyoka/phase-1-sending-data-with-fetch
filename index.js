@@ -1,28 +1,25 @@
 // Add your code here
-function submitData (userName, userEmail) {
-    const user ={
-        "name": 
-        "email"
-    }
-    const userdata = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(user),
-      };
+const { Body } = require("node-fetch");
 
-    return fetch("http://localhost:3000/users", userdata)
-    .then(function (response) {
-        return response.json();
-      })
-      .then(function (object) {
-        console.log(object);
-        document.body.innerHTML = object.id
-      })
-      .catch(function (error) {
-        console.log(error.message);
-        document.body.innerHTML = error.message
-      })
+// Add your code here
+function submitData(name,email){
+    const formData={
+        name,
+        email
+    }
+    return fetch("http://localhost:3000/users",{
+        method: "POST",
+        headers:{
+            "content-type":"application/json",
+            accept:"application/json",
+        },
+        body:JSON.stringify(formData)
+    })
+    .then(response => response.json())
+
+    .then(jsonData => {
+        document.body.innerHTML=jsonData.id;
+    })
+    .catch(message=> document.body.innerHTML=message)
+
 }
